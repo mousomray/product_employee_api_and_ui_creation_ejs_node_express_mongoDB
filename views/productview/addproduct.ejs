@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs') %>
+  <body>
+    <%- include('../common/navbar.ejs') %>
+
+    <div
+      class="container mt-5"
+      style="
+        max-width: 600px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <h2 class="mb-4 text-center" style="color: #343a40">Add New Product</h2>
+      <form action="/addproduct" method="POST">
+        <!-- Product Name -->
+        <div class="form-group">
+          <label for="p_name" style="font-weight: bold; color: #495057"
+            >Product Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="p_name"
+            name="p_name"
+            required
+            minlength="3"
+            placeholder="Enter product name"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Product name must be at least 3 characters.</small
+          >
+        </div>
+
+        <!-- Product Sizes (Array of Sizes) -->
+        <div class="form-group">
+          <label for="p_size" style="font-weight: bold; color: #495057"
+            >Product Sizes (comma-separated)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="p_size"
+            name="p_size"
+            required
+            minlength="5"
+            placeholder="Enter product sizes, e.g., Small, Medium, Large"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Each size must be at least 3 characters.</small
+          >
+        </div>
+
+        <!-- Product Colors (Array of Colors) -->
+        <div class="form-group">
+          <label for="p_color" style="font-weight: bold; color: #495057"
+            >Product Colors (comma-separated)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="p_color"
+            name="p_color"
+            required
+            minlength="5"
+            placeholder="Enter product colors, e.g., Red, Blue, Green"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Each color must be at least 3 characters.</small
+          >
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+          <label for="price" style="font-weight: bold; color: #495057"
+            >Price ($)</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="price"
+            required
+            placeholder="Enter product price"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+        </div>
+
+        <!-- Image URL -->
+        <div class="form-group">
+          <label for="image" style="font-weight: bold; color: #495057"
+            >Image URL</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            name="image"
+            placeholder="Enter image URL"
+            value="https://t3.ftcdn.net/jpg/05/25/55/06/360_F_525550698_pcSOrKvA81oMHeEgI1e6MJHn1NIzWREd.jpg"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >If left empty, a default image will be used.</small
+          >
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn btn-primary btn-block mt-4"
+          style="padding: 10px; font-weight: bold"
+        >
+          Add Product
+        </button>
+      </form>
+    </div>
+
+    <%- include('../common/footer.ejs') %>
+  </body>
+</html>

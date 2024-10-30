@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs') %>
+  <body>
+    <%- include('../common/navbar.ejs') %>
+
+    <!-- Product Section Start -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-4">
+          <% products.slice(0,products.length).reverse().forEach((value) =>{ %>
+          <div
+            class="col-lg-3 col-sm-6 wow fadeInUp"
+            data-wow-delay="0.1s"
+            style="height: 500px"
+          >
+            <div class="service-item text-center pt-3">
+              <div class="p-4">
+                <img
+                  src="<%= value.image %>"
+                  alt="<%= value.p_name %>"
+                  class="img-fluid mb-3"
+                  style="height: 200px"
+                />
+                <!-- Display product image -->
+                <h5 class="mb-3"><%= value.p_name %></h5>
+                <!-- Display product name -->
+                <p>
+                  Price: $<%= value.price %>
+                  <!-- Display product price -->
+                </p>
+                <p>
+                  <%= value.p_color %>
+                  <!-- Display product color -->
+                </p>
+                <p>
+                  <%= value.p_size %>
+                  <!-- Display product size -->
+                </p>
+
+                <!-- Edit Handling Form-->
+                <form
+                  action="/product/<%= value._id %>/edit"
+                  method="GET"
+                  style="display: inline"
+                >
+                  <button type="submit" class="btn btn-warning">Edit</button>
+                </form>
+
+                <!-- Delete button with POST and DELETE method override -->
+                <form
+                  action="/product/<%= value._id %>?_method=DELETE"
+                  method="POST"
+                  style="display: inline"
+                >
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <!-- Product Section End -->
+
+    <%- include('../common/footer.ejs') %>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs') %>
+  <body>
+    <%- include('../common/navbar.ejs') %>
+
+    <div
+      class="container mt-5"
+      style="
+        max-width: 600px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <h2 class="mb-4 text-center" style="color: #343a40">Edit Employee</h2>
+      <!--Apply Method Overriding for handle edit-->
+      <form action="/employee/<%= employee._id %>?_method=PUT" method="POST">
+        <!-- Employee Name -->
+        <div class="form-group">
+          <label for="Name" style="font-weight: bold; color: #495057"
+            >Employee Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+            minlength="3"
+            placeholder="Enter employee name"
+            value="<%= employee.name %>"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Employee name must be at least 3 characters.</small
+          >
+        </div>
+
+        <!--  Email -->
+        <div class="form-group">
+          <label for="Name" style="font-weight: bold; color: #495057"
+            >Employee Email</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+            pattern="/[a-z0-9\._%+!$&*=^|~#%'`?{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,16})/"
+            placeholder="Enter employee email"
+            value="<%= employee.email %>"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Employee email should be xyz@gmail.com format</small
+          >
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="price" style="font-weight: bold; color: #495057"
+            >Phone</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="phone"
+            name="phone"
+            required
+            maxlength="10"
+            minlength="10"
+            placeholder="Enter phone number"
+            value="<%= employee.phone %>"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+        </div>
+
+        <!-- City-->
+        <div class="form-group">
+          <label for="Name" style="font-weight: bold; color: #495057"
+            >City</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            required
+            minlength="3"
+            placeholder="Enter city"
+            value="<%= employee.city %>"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Employee city must be at least 3 characters.</small
+          >
+        </div>
+
+        <!-- Pin -->
+        <div class="form-group">
+          <label for="Name" style="font-weight: bold; color: #495057"
+            >Pin</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="pin"
+            name="pin"
+            required
+            placeholder="Enter Pin"
+            value="<%= employee.pin %>"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >Pin is required</small
+          >
+        </div>
+
+        <!-- Position-->
+        <div class="form-group">
+            <label for="Name" style="font-weight: bold; color: #495057"
+              >Position</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              name="position"
+              required
+              minlength="3"
+              placeholder="Enter position"
+              value="<%= employee.position %>"
+              style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+            />
+            <small
+              class="form-text text-muted"
+              style="font-size: 12px; color: red"
+              >Employee position must be at least 3 characters.</small
+            >
+          </div>
+
+        <!-- Image URL -->
+        <div class="form-group">
+          <label for="image" style="font-weight: bold; color: #495057"
+            >Image URL</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            name="image"
+            placeholder="Enter image URL"
+            value="<%= employee.image %>"
+            style="border: 1px solid #ced4da; border-radius: 5px; padding: 10px"
+          />
+          <small
+            class="form-text text-muted"
+            style="font-size: 12px; color: red"
+            >If left empty, a default image will be used.</small
+          >
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn btn-primary btn-block mt-4"
+          style="padding: 10px; font-weight: bold"
+        >
+          Edit Employee
+        </button>
+      </form>
+    </div>
+
+    <%- include('../common/footer.ejs') %>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs') %>
+  <body>
+    <%- include('../common/navbar.ejs') %>
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h6 class="section-title bg-white text-center text-primary px-3">
+            Employees
+          </h6>
+          <h1 class="mb-5">Expert Employees</h1>
+        </div>
+
+        <div class="row g-4">
+          <!-- Add both table and table-responsive classes for better Bootstrap styling -->
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Picture</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Pin</th>
+                <th scope="col">Position</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Use a properly closed forEach function -->
+              <% employees.slice(0, employees.length).reverse().forEach((value,
+              index) => { %>
+              <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td>
+                  <img
+                    src="<%= value.image %>"
+                    alt="<%= value.name %>"
+                    height="80px"
+                    width="80px"
+                    class="rounded-circle"
+                  />
+                </td>
+                <td><%= value.name %></td>
+                <td><%= value.email %></td>
+                <td><%= value.phone %></td>
+                <td><%= value.city %></td>
+                <td><%= value.pin %></td>
+                <td><%= value.position %></td>
+                <td>
+                  <!-- Edit button with GET method -->
+                  <form
+                    action="/employee/<%= value._id %>/edit"
+                    method="GET"
+                    style="display: inline"
+                  >
+                    <button type="submit" class="btn btn-warning">Edit</button>
+                  </form>
+                </td>
+                <td>
+                  <!-- Delete button with POST and DELETE method override -->
+                  <form
+                    action="/employee/<%= value._id %>?_method=DELETE"
+                    method="POST"
+                    style="display: inline"
+                  >
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team End -->
+
+    <%- include('../common/footer.ejs') %>
+  </body>
+</html>
